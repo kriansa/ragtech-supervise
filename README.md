@@ -11,7 +11,7 @@ project aims to provide a Docker image with Supervise supplying all required dep
 You can run a new container from the computer where the UPS USB cable is plugged to.
 
 ```
-$ docker run -d --name supervise --device=/dev/bus/usb -p 4470:4470 ghcr.io/kriansa/ragtech-supervise:latest
+$ docker run -d --name supervise --privileged -p 4470:4470 ghcr.io/kriansa/ragtech-supervise:latest
 ```
 
 ## Logging
