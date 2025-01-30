@@ -20,7 +20,7 @@ RUN for file in config.so device.so devices.xml monit.cfg monit.so supsvc web; d
 FROM docker.io/library/debian:bookworm-slim
 
 # supsvc only requires these packages below
-RUN apt-get update && apt-get install -y libqt5core5a libqt5script5 libqt5sql5 sqlite3 && \
+RUN apt-get update && apt-get install -y libqt5core5a libqt5script5 libqt5sql5 sqlite3 udev && \
   apt-get clean autoclean && apt-get autoremove --yes && rm -rf /var/lib/{apt,dpkg,cache,log}/
 
 COPY --from=build /opt/supervise /opt/supervise
