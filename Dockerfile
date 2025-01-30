@@ -1,8 +1,7 @@
 FROM docker.io/library/debian:bookworm-slim AS build
 ARG SUPERVISE_VERSION=8.9-2
 
-RUN apt-get update && \
-  apt-get install -y curl libqt5core5a libqt5script5 libqt5sql5
+RUN apt-get update && apt-get install -y curl
 
 RUN mkdir /root/supervise
 WORKDIR /root/supervise
