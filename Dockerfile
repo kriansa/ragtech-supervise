@@ -1,4 +1,4 @@
-FROM docker.io/library/debian:bookworm-slim as build
+FROM docker.io/library/debian:bookworm-slim AS build
 ARG SUPERVISE_VERSION=8.9-2
 
 RUN apt-get update && \
