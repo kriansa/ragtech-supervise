@@ -8,10 +8,11 @@ project aims to provide a Docker image with Supervise supplying all required dep
 
 ## Usage
 
-You can run a new container from the computer where the UPS USB cable is plugged to.
+You can run a new container from the computer where the UPS USB cable is plugged to. Validate that
+the serial interface created by this USB is named `/dev/ttyACM0` and replace it accordingly:
 
 ```
-$ docker run -d --name supervise --privileged -p 4470:4470 ghcr.io/kriansa/ragtech-supervise:latest
+$ docker run -d --name supervise --device /dev/ttyACM0:rw -p 4470:4470 ghcr.io/kriansa/ragtech-supervise:latest
 ```
 
 ## Logging
