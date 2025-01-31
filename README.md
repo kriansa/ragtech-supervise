@@ -17,7 +17,8 @@ $ docker run -d --name supervise --device /dev/ttyACM0:rw -p 4470:4470 ghcr.io/k
 
 ## Logging
 
-All log output is written to stdout and stderr. Logs are categorized with four different prefixes:
+All log output is written to stdout and stderr. Logs are categorized with 5 different prefixes:
+  - `init`: Logs related to the container initialization/termination
   - `main`: Logs referring to the stderr/stdout of the main `supsvc` process
   - `supsvc`: Logs related to the main supervise functionality
   - `device-manager`: Unknown, but I assume it's related to the communication with the UPS'es
