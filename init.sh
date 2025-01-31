@@ -3,8 +3,13 @@
 mkdir /opt/supervise/log
 touch /opt/supervise/log/supsvc.log /opt/supervise/log/device.log /opt/supervise/log/serialhid.log
 
+# Setup the database in the data directory
+ln -sf /data/monit.db /opt/supervise/monit.db
+ln -sf /data/monit.db-wal /opt/supervise/monit.db-wal
+ln -sf /data/monit.db-shm /opt/supervise/monit.db-shm
+
 # Set the monit DB to WAL to allow concurrent readers
-sqlite3 /opt/supervise/monit.db "PRAGMA journal_mode=WAL" >/dev/null
+sqlite3 /data/monit.db "PRAGMA journal_mode=WAL" >/dev/null
 
 # This process will fork if their parent is not PID 1
 # We also tag their log lines with `main` so it doesn't get confused with the other log streams

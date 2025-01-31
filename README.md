@@ -33,18 +33,15 @@ create a metrics exporter out of the UPS data.
 **IMPORTANT:** The SQLite database is set to use `WAL` as the journaling mode, so you can read the
 database while it's being written to. Because of that, you need to also account for all the database
 files:
-  - /opt/supervise/monit.db
-  - /opt/supervise/monit.db-wal
-  - /opt/supervise/monit.db-shm
+  - /data/monit.db
+  - /data/monit.db-wal
+  - /data/monit.db-shm
 
 This is how you would run the container with the database mounted to the host filesystem:
 
 ```
-$ docker run [...] \
-  -v ./ups.db:/opt/supervise/monit.db \
-  -v ./ups.db-wal:/opt/supervise/monit.db-wal \
-  -v ./ups.db-shm:/opt/supervise/monit.db-shm \
-  ghcr.io/kriansa/ragtech-supervise:latest
+$ mkdir host-db-path
+$ docker run [...] -v ./host-db-path:/data ghcr.io/kriansa/ragtech-supervise:latest
 ```
 
 ## License

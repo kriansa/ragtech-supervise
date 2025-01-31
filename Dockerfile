@@ -26,4 +26,5 @@ COPY --from=build /opt/supervise /opt/supervise
 COPY init.sh /init.sh
 
 EXPOSE 4470
+VOLUME /data
 ENTRYPOINT ["/init.sh"]
