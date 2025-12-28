@@ -21,13 +21,11 @@ FROM docker.io/library/debian:trixie-slim
 # supsvc only requires these packages below
 RUN apt-get update && apt-get upgrade --yes && \
   apt-get install -y libqt5core5a libqt5script5 libqt5sql5 sqlite3 udev procps && \
-  apt-get clean autoclean && apt-get autoremove --yes && rm -rf /var/lib/{apt,dpkg,cache,log}/ && \
-  useradd --system --no-create-home --home-dir /opt/supervise --uid 900 supervise
+  apt-get clean autoclean && apt-get autoremove --yes && rm -rf /var/lib/{apt,dpkg,cache,log}/
 
-COPY --from=build --chown=supervise:supervise /opt/supervise /opt/supervise
+COPY --from=build /opt/supervise /opt/supervise
 COPY init.sh /init.sh
 
 EXPOSE 4470
 VOLUME /data
-USER supervise
 ENTRYPOINT ["/init.sh"]
